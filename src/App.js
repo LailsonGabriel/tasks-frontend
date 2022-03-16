@@ -1,8 +1,11 @@
+import { Routes, Route } from 'react-router-dom';
+import LoginPage from './Pages/Login/Index';
+
 function App() {
   return (
-    <div>
-      <h1>Tasks-calendar</h1>
-    </div>
+    <Routes>
+      <Route path='/' element={<LoginPage />} />
+    </Routes>
   );
 }
 
