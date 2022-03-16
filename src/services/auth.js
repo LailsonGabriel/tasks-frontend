@@ -13,4 +13,25 @@ const login = async (email, password) => {
   }
 };
 
-export { login };
+const logout = async () => {
+  try {
+    Cookies.remove('session');
+    window.location.replace('/');
+  } catch (error) {
+    throw error;
+  }
+};
+
+const register = async (name, email, password) => {
+  try {
+    const {
+      data: { token },
+    } = await api.post('/user/register', { name, email, password });
+    Cookies.set('session', token, { expires: 7 });
+    api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+  } catch (err) {
+    return { err };
+  }
+};
+
+export { login, logout, register };

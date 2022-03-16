@@ -35,7 +35,7 @@ function LoginPage() {
         />
       </div>
       <div>
-        <Link to='/register'></Link>
+        <Link to='/register'>Clique aqui para cadastro</Link>
       </div>
       <button type='button' onClick={submitLogin}>
         Logar
