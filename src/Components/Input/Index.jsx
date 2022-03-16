@@ -1,5 +1,5 @@
-function InputReusable({ type, onchange, value }) {
-  return <input type={type} OnChange={onchange} value={value} />;
+function InputReusable({ type, onChange, value, name }) {
+  return <input name={name} type={type} value={value} onChange={onChange} />;
 }
 
 export default InputReusable;
