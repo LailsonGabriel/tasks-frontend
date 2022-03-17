@@ -7,6 +7,7 @@ import NewTaskModal from '../NewTask/Index';
 import { useContext } from 'react';
 import MyContext from '../../Context/MyContext';
 import UseEvents from '../../Hooks/useEvents';
+import { Button } from 'react-bootstrap';
 
 function CalendarComponent() {
   const { show, events, setEvents } = useContext(MyContext);
@@ -19,9 +20,9 @@ function CalendarComponent() {
 
   return (
     <div>
-      <button type='button' onClick={show}>
+      <Button type='button' onClick={show}>
         Nova Tarefa
-      </button>
+      </Button>
       <NewTaskModal />
       <Calendar
         onSelectEvent={handleSelected}

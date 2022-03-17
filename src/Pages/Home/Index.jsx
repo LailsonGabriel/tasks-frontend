@@ -1,12 +1,13 @@
 import CalendarComponent from '../../Components/Calendar/Index';
 import { logout } from '../../services/auth';
+import { Button } from 'react-bootstrap';
 
 function HomePage() {
   return (
     <div>
-      <button type='button' onClick={async () => logout()}>
+      <Button type='button' variant='danger' onClick={async () => logout()}>
         Sair
-      </button>
+      </Button>
       <CalendarComponent />
     </div>
   );
