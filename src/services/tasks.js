@@ -9,4 +9,13 @@ const getTasks = async (id) => {
   }
 };
 
-export { getTasks };
+const createTask = async (body) => {
+  try {
+    const { data } = await api.post(`/tasks`);
+    return data;
+  } catch (err) {
+    return { err };
+  }
+};
+
+export { getTasks, createTask };
