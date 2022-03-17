@@ -22,6 +22,7 @@ function CalendarComponent() {
     {
       title: 'Bom preço',
       dateAndHour: new Date('2022', '02', '16'),
+      color: 'red',
     },
   ];
 
