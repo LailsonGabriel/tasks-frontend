@@ -3,6 +3,7 @@ import InputReusable from '../../Components/Input/Index';
 import InputHandler from '../../utils/InputHandler';
 import { register as registerAuth } from '../../services/auth';
 import { Link } from 'react-router-dom';
+import saveLocalStorage from '../../utils/saveLocalStorage';
 
 function RegisterPage() {
   const [register, setRegister] = useState({
@@ -17,7 +18,8 @@ function RegisterPage() {
 
   const submitRegister = async (e) => {
     const { name, email, password } = register;
-    await registerAuth(name, email, password);
+    const infos = await registerAuth(name, email, password);
+    saveLocalStorage('userInfos', infos);
     window.location.reload();
   };
 

@@ -3,6 +3,7 @@ import InputHandler from '../../utils/InputHandler';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import { login as loginAuth } from '../../services/auth';
+import saveLocalStorage from '../../utils/saveLocalStorage';
 
 function LoginPage() {
   const [login, setLogin] = useState({ email: '', password: '' });
@@ -13,7 +14,8 @@ function LoginPage() {
 
   const submitLogin = async () => {
     const { email, password } = login;
-    await loginAuth(email, password);
+    const infos = await loginAuth(email, password);
+    saveLocalStorage('userInfos', infos);
     window.location.reload();
   };
 

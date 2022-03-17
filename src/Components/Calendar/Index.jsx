@@ -8,23 +8,11 @@ import { useContext } from 'react';
 import MyContext from '../../Context/MyContext';
 
 function CalendarComponent() {
-  const { show } = useContext(MyContext);
+  const { show, events, setEvents } = useContext(MyContext);
   const localizer = momentLocalizer(moment);
   const handleSelected = (event) => {
     console.log(event);
   };
-
-  const events = [
-    {
-      title: 'Meeting',
-      dateAndHour: new Date('2022', '02', '14'),
-    },
-    {
-      title: 'Bom preço',
-      dateAndHour: new Date('2022', '02', '16'),
-      color: 'red',
-    },
-  ];
 
   return (
     <div>
