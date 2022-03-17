@@ -5,6 +5,7 @@ function MyProvider({ children }) {
   const [events, setEvents] = useState([]);
   const [rodal, setRodal] = useState(false);
   const [user, setUser] = useState({});
+  const [editedTask, setEditedTask] = useState({});
 
   useEffect(() => {
     const getUser = JSON.parse(localStorage.getItem('userInfos'));
@@ -21,7 +22,16 @@ function MyProvider({ children }) {
     setRodal(false);
   }
 
-  const reveal = { show, hide, rodal, events, setEvents, user };
+  const reveal = {
+    show,
+    hide,
+    rodal,
+    events,
+    setEvents,
+    user,
+    editedTask,
+    setEditedTask,
+  };
 
   return <MyContext.Provider value={reveal}>{children}</MyContext.Provider>;
 }

@@ -18,4 +18,22 @@ const createTask = async (body) => {
   }
 };
 
-export { getTasks, createTask };
+const updateTask = async (id, body) => {
+  try {
+    const { data } = await api.put(`/tasks/${id}`, { ...body });
+    return data;
+  } catch (err) {
+    return { err };
+  }
+};
+
+const deleteTask = async (id) => {
+  try {
+    const { data } = await api.delete(`/tasks/${id}`);
+    return data;
+  } catch (err) {
+    return { err };
+  }
+};
+
+export { getTasks, createTask, updateTask, deleteTask };
