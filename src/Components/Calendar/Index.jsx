@@ -6,6 +6,7 @@ import { messages } from './configMessages';
 import NewTaskModal from '../NewTask/Index';
 import { useContext } from 'react';
 import MyContext from '../../Context/MyContext';
+import UseEvents from '../../Hooks/useEvents';
 
 function CalendarComponent() {
   const { show, events, setEvents } = useContext(MyContext);
@@ -13,6 +14,8 @@ function CalendarComponent() {
   const handleSelected = (event) => {
     console.log(event);
   };
+
+  UseEvents(setEvents);
 
   return (
     <div>
