@@ -2,24 +2,38 @@ import { useContext, useState } from 'react';
 import Rodal from 'rodal';
 import 'rodal/lib/rodal.css';
 import MyContext from '../../Context/MyContext';
-import InputReusable from '../Input/Index';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import InputHandler from '../../utils/InputHandler';
 import { Button, Form } from 'react-bootstrap';
+import { createTask } from '../../services/tasks';
+import moment from 'moment';
 
 function NewTaskModal() {
-  const [newTask, setNewTask] = useState({
-    resolved: '',
+  const { hide, rodal, events, setEvents, user } = useContext(MyContext);
+  const defaultState = {
     description: '',
     dateAndHour: new Date(),
     duration: '',
     title: '',
-  });
-  const { hide, rodal } = useContext(MyContext);
+  };
+  const [newTask, setNewTask] = useState(defaultState);
 
   const handleNewTask = (e) => {
     InputHandler(e, newTask, setNewTask);
+  };
+
+  const submitNewTask = async () => {
+    let momentObj = moment(new Date(newTask.dateAndHour));
+    const momentString = momentObj.format('YYYY-MM-DD');
+    const data = await createTask({
+      ...newTask,
+      idUser: user.id,
+      dateAndHour: momentString,
+    });
+    setEvents([...events, data]);
+    setNewTask(defaultState);
+    hide();
   };
 
   return (
@@ -39,6 +53,7 @@ function NewTaskModal() {
             className='mt-2 mb-2'
             name='description'
             placeholder='Descrição'
+            onChange={handleNewTask}
             value={newTask.description}
           />
           <div className='d-flex justify-content-center align-items-center'>
@@ -52,11 +67,14 @@ function NewTaskModal() {
             type='text'
             name='duration'
             className='mt-2'
+            onChange={handleNewTask}
             placeholder='Duração em min | Ex: 60'
             value={newTask.duration}
           />
           <div className='d-flex flex-md-row justify-content-center mt-3'>
-            <Button variant='success'>Criar Tarefa</Button>
+            <Button variant='success' onClick={submitNewTask}>
+              Criar Tarefa
+            </Button>
             <Button variant='danger' onClick={hide}>
               Cancelar
             </Button>

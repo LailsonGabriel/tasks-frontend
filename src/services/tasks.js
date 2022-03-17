@@ -11,7 +11,7 @@ const getTasks = async (id) => {
 
 const createTask = async (body) => {
   try {
-    const { data } = await api.post(`/tasks`);
+    const { data } = await api.post(`/tasks`, { ...body });
     return data;
   } catch (err) {
     return { err };

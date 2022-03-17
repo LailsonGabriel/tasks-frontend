@@ -4,4 +4,5 @@ export const messages = {
   today: 'Hoje',
   month: 'Mês',
   week: 'Semana',
+  day: 'Dia',
 };
