@@ -1,7 +1,13 @@
+import CalendarComponent from '../../Components/Calendar/Index';
+import { logout } from '../../services/auth';
+
 function HomePage() {
   return (
     <div>
-      <h1>Home Page</h1>
+      <button type='button' onClick={async () => logout()}>
+        Sair
+      </button>
+      <CalendarComponent />
     </div>
   );
 }

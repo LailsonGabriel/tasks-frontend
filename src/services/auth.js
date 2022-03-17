@@ -16,7 +16,7 @@ const login = async (email, password) => {
 const logout = async () => {
   try {
     Cookies.remove('session');
-    window.location.replace('/');
+    window.location.replace('/login');
   } catch (error) {
     throw error;
   }
