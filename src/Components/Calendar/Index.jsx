@@ -3,7 +3,7 @@ import 'react-big-calendar/lib/css/react-big-calendar.css';
 import moment from 'moment';
 import 'moment/locale/pt-br';
 import { messages } from './configMessages';
-import NewTaskModal from '../NewTask/Index';
+import NewTaskModal from '../TaskCreateAndEdit/Index';
 import { useContext, useState } from 'react';
 import MyContext from '../../Context/MyContext';
 import UseEvents from '../../Hooks/useEvents';
@@ -18,7 +18,6 @@ function CalendarComponent() {
 
   const handleSelected = (event) => {
     setViewTask(true);
-    console.log(event);
     setTaskCurrent(event);
   };
 

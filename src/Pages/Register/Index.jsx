@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import InputReusable from '../../Components/Input/Index';
 import InputHandler from '../../utils/InputHandler';
 import { register as registerAuth } from '../../services/auth';
 import { Link } from 'react-router-dom';
 import saveLocalStorage from '../../utils/saveLocalStorage';
+import { Form } from 'react-bootstrap';
 
 function RegisterPage() {
   const [register, setRegister] = useState({
@@ -24,24 +24,27 @@ function RegisterPage() {
   };
 
   return (
-    <div>
+    <div className='d-flex justify-content-md-center flex-column align-items-center mt-4'>
       <h1>Register</h1>
-      <div>
-        <InputReusable
+      <div className='d-flex flex-column'>
+        <Form.Control
           name='name'
           type='text'
           value={register.name}
+          placeholder='Nome'
           onChange={handleRegister}
         />
-        <InputReusable
+        <Form.Control
           name='email'
           type='text'
+          placeholder='Email'
           value={register.email}
           onChange={handleRegister}
         />
-        <InputReusable
+        <Form.Control
           name='password'
           type='text'
+          placeholder='Senha'
           value={register.password}
           onChange={handleRegister}
         />

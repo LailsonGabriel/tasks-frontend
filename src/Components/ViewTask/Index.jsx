@@ -3,7 +3,7 @@ import Rodal from 'rodal';
 import 'rodal/lib/rodal.css';
 import MyContext from '../../Context/MyContext';
 import { deleteTask, updateTask } from '../../services/tasks';
-import CreateAndEdit from '../NewTask/CreateAndEdit';
+import CreateAndEdit from '../TaskCreateAndEdit/CreateAndEdit';
 import InputHandler from '../../utils/InputHandler';
 import ViewTask from './ViewTask';
 

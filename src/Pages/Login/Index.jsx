@@ -1,9 +1,9 @@
-import InputReusable from '../../Components/Input/Index';
 import InputHandler from '../../utils/InputHandler';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import { login as loginAuth } from '../../services/auth';
 import saveLocalStorage from '../../utils/saveLocalStorage';
+import { Form } from 'react-bootstrap';
 
 function LoginPage() {
   const [login, setLogin] = useState({ email: '', password: '' });
@@ -20,18 +20,20 @@ function LoginPage() {
   };
 
   return (
-    <div>
+    <div className='d-flex justify-content-md-center flex-column align-items-center mt-4'>
       <h1>Login</h1>
-      <div>
-        <InputReusable
+      <div fluid='auto'>
+        <Form.Control
           type='text'
           name='email'
           value={login.email}
+          placeholder='Email'
           onChange={handleLogin}
         />
-        <InputReusable
+        <Form.Control
           type='password'
           name='password'
+          placeholder='Senha'
           value={login.password}
           onChange={handleLogin}
         />
